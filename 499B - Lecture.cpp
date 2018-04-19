@@ -7,8 +7,7 @@
 #include<map>
 #include<conio.h>
 using namespace std;
-//참가자들을 m개의 팀으로 나눈다 각 팀은 최소 1명 이상의 참가자가 있다.
-//같은 팀에 속한 참가자들은 친구가 될수있다. 친구의 최대 최소 숫자를 구하라
+//강의를 필기할때 언어 a와 언어 b중 짧은것을 선택하여 필기를 하였을때 결과(a,b의 결과가 같으면 a를 선호)
 vector<string> note;
 vector<string> result;
 string short_note(string a, int m) {
