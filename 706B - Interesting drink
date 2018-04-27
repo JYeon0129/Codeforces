@@ -1,0 +1,42 @@
+#include<iostream>
+#include<string>
+#include<math.h>
+#include<algorithm>
+#include<functional> 
+#include<vector>
+#include<map>
+#include<conio.h>
+using namespace std;
+int n,q,tmp;
+int *store;
+vector<int> result;
+// 음료를 파는 가게마다 tmp의 코인을 쓸수있고 q일 동안 음료를 구매하려한다.
+// 그날 그날 음료를 구매할수 있는 가게의 최대 숫자를 출력
+int b_search(int a, int start, int end) {
+	int r = 0;
+	int m = (start + end) / 2;
+	if (a < store[0]) return 0;
+	if (a >= store[n - 1]) return n;
+
+	if (a < store[m+1] && a >= store[m]) return m+1;
+	else if (a < store[m]) r = b_search(a, start, m - 1);
+	else if (a >= store[m]) r = b_search(a, m + 1, end);
+	return r;
+}
+
+int main() { 
+	cin >> n;
+	store = new int[n];
+	for (int i = 0; i < n; i++) {
+		store[i] = 0;
+		cin >> store[i];
+	}
+	sort(store, store + n);
+	cin >> q;
+	for (int i = 0; i < q; i++) {
+		cin >> tmp;
+		result.push_back(b_search(tmp, 0, n-1));
+	}
+	for (int i = 0; i < result.size(); i++) cout << result.at(i) << endl;
+	return 0;
+}
