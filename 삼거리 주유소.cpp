@@ -12,7 +12,6 @@ vector<int> v_cost;
 vector<int> v_length;
 int arr[5000];
 int h, v, n, pre_mini = 0;
-int *dp;
 
 int horizontal_only() { // case1
 	int result = 0, min_cost = 1001;
@@ -42,7 +41,6 @@ int horizontal_mini2(int mini) {
 	return result;
 }
 
-
 int vertical_mini(int mini) {
 	int result = 0, min_cost = mini, now_total = 0;
 	
@@ -70,7 +68,6 @@ int vertical_mini(int mini) {
 	return arr[0];
 }
 
-
 int main() {
 	int tmp1, tmp2, result = 0;
 	cin >> h;
@@ -85,9 +82,7 @@ int main() {
 		v_cost.push_back(tmp2);
 		v_length.push_back(tmp1);
 	}
-	dp = new int[h - v + n];
 	int c0 = horizontal_only();
-
 	int c1 = horizontal_mini();
 	if (pre_mini > h_cost.at(v - 1)) pre_mini = h_cost.at(v - 1);
 	int c2 = vertical_mini(pre_mini);
